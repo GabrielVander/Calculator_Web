@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ex_4</title>
+
+    <style>
+        td, th {
+            text-align: center;
+            font-size: larger;
+            color: goldenrod;
+            height: 30px;
+            width: 35px;
+        }
+        table{
+            font-size: larger;
+            background-color: black;
+            border-color: darkorange;
+
+        }
+    </style>
+</head>
+<body>
+    <table border="2" align="center" id="a">
+        <tr>
+            <th colspan="10" id="b">
+                Calculator
+            </th>
+        </tr>
+        <tr>
+            <td colspan="6" id="screen"></td><td colspan="2" id="ac">AC</td><td colspan="2" id="=">=</td>
+        </tr>
+        <tr>
+            <td colspan="2">7</td><td colspan="2">8</td><td colspan="2">9</td><td colspan="2">+</td><td colspan="2">-</td>
+        </tr>
+        <tr>
+            <td colspan="2">4</td><td colspan="2">5</td><td colspan="2">6</td><td colspan="2">*</td><td colspan="2">/</td>
+        </tr>
+        <tr>
+            <td colspan="2">1</td><td colspan="2">2</td><td colspan="2">3</td><td colspan="2">0</td><td colspan="2">.</td>
+        </tr>
+    </table>
+</body>
+</html>
+<script>
+    table = document.getElementsByTagName("table")[0];
+    table.addEventListener("click", function (event) {
+        let target = event.target;
+        if(target.id === "ac"){
+            document.getElementById("screen").innerText = "";
+        }
+        else if(target.id === "="){
+            let screen = document.getElementById("screen");
+            screen.innerText = eval(screen.innerHTML).toString();
+        }
+        else if(target.id !== "screen" && target.id !== "a" && target.id !== "b"){
+            document.getElementById("screen").innerText += target.innerText;
+        }
+    })
+</script>
